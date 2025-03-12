@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { useThemeStore } from './store/theme';
 import Navbar from './components/Navbar';
@@ -14,26 +14,10 @@ import '@fontsource/poppins';
 import '@fontsource/inter';
 import './App.css';
 
-// Create a component to handle the AnimatePresence and Routes
-const AnimatedRoutes = () => {
-  const location = useLocation();
-  
-  return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/testimonials" element={<Testimonials />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </AnimatePresence>
-  );
-};
-
 function App() {
   const [showSplash, setShowSplash] = useState(true);
   const isDarkMode = useThemeStore((state) => state.isDarkMode);
+  const location = useLocation();
 
   useEffect(() => {
     if (isDarkMode) {
@@ -53,13 +37,19 @@ function App() {
   }
 
   return (
-    <Router basename="/Portfolio">
-      <div className="min-h-screen bg-primary-light dark:bg-primary-dark text-text-light dark:text-text-dark font-inter transition-colors duration-300">
-        <Navbar />
-        <AnimatedRoutes />
-        <AnimatedCursor />
-      </div>
-    </Router>
+    <div className="min-h-screen bg-primary-light dark:bg-primary-dark text-text-light dark:text-text-dark font-inter transition-colors duration-300">
+      <Navbar />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </AnimatePresence>
+      <AnimatedCursor />
+    </div>
   );
 }
 
