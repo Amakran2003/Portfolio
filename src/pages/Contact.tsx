@@ -15,7 +15,7 @@ const Contact = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="font-poppins text-4xl font-bold mb-8">{t.title}</h1>
+          <h1 className="font-poppins text-4xl font-bold mb-8 text-center">{t.title}</h1>
           <div className="max-w-2xl mx-auto">
             <form className="space-y-6">
               <div>
