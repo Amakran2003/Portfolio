@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { useThemeStore } from './store/theme';
 import Navbar from './components/Navbar';
@@ -9,6 +9,7 @@ import Projects from './pages/Projects';
 import Testimonials from './pages/Testimonials';
 import Contact from './pages/Contact';
 import AnimatedCursor from './components/AnimatedCursor';
+import SplashScreen from './components/SplashScreen';
 import '@fontsource/poppins';
 import '@fontsource/inter';
 
@@ -30,6 +31,7 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
   const isDarkMode = useThemeStore((state) => state.isDarkMode);
 
   useEffect(() => {
@@ -40,14 +42,23 @@ function App() {
     }
   }, [isDarkMode]);
 
+  // Handle splash screen completion
+  const handleSplashComplete = () => {
+    setShowSplash(false);
+  };
+
   return (
-    <Router>
-      <div className="min-h-screen bg-primary-light dark:bg-primary-dark text-text-light dark:text-text-dark font-inter transition-colors duration-300">
-        <Navbar />
-        <AnimatedRoutes />
-        <AnimatedCursor />
-      </div>
-    </Router>
+    <>
+      {showSplash ? (
+        <SplashScreen onComplete={handleSplashComplete} />
+      ) : (
+        <div className="min-h-screen bg-primary-light dark:bg-primary-dark text-text-light dark:text-text-dark font-inter transition-colors duration-300">
+          <Navbar />
+          <AnimatedRoutes />
+          <AnimatedCursor />
+        </div>
+      )}
+    </>
   );
 }
 
