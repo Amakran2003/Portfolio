@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { useThemeStore } from './store/theme';
 import Navbar from './components/Navbar';
@@ -12,6 +12,7 @@ import AnimatedCursor from './components/AnimatedCursor';
 import SplashScreen from './components/SplashScreen';
 import '@fontsource/poppins';
 import '@fontsource/inter';
+import './App.css';
 
 // Create a component to handle the AnimatePresence and Routes
 const AnimatedRoutes = () => {
@@ -47,18 +48,18 @@ function App() {
     setShowSplash(false);
   };
 
+  if (showSplash) {
+    return <SplashScreen onComplete={handleSplashComplete} />;
+  }
+
   return (
-    <>
-      {showSplash ? (
-        <SplashScreen onComplete={handleSplashComplete} />
-      ) : (
-        <div className="min-h-screen bg-primary-light dark:bg-primary-dark text-text-light dark:text-text-dark font-inter transition-colors duration-300">
-          <Navbar />
-          <AnimatedRoutes />
-          <AnimatedCursor />
-        </div>
-      )}
-    </>
+    <Router basename="/Portfolio">
+      <div className="min-h-screen bg-primary-light dark:bg-primary-dark text-text-light dark:text-text-dark font-inter transition-colors duration-300">
+        <Navbar />
+        <AnimatedRoutes />
+        <AnimatedCursor />
+      </div>
+    </Router>
   );
 }
 
