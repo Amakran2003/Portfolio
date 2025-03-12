@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { useThemeStore } from './store/theme';
 import Navbar from './components/Navbar';
@@ -18,6 +18,7 @@ function App() {
   const [showSplash, setShowSplash] = useState(true);
   const isDarkMode = useThemeStore((state) => state.isDarkMode);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isDarkMode) {
@@ -27,9 +28,32 @@ function App() {
     }
   }, [isDarkMode]);
 
+  // Parse the URL to handle GitHub Pages SPA redirection
+  useEffect(() => {
+    // Check if we have a redirect path from GitHub Pages in the query string
+    const queryParams = new URLSearchParams(window.location.search);
+    const redirectPath = queryParams.get('p');
+    
+    if (redirectPath) {
+      // Remove the query parameter and navigate to the correct path
+      window.history.replaceState(null, '', window.location.pathname);
+      navigate(redirectPath);
+    }
+  }, [navigate]);
+
   // Handle splash screen completion
   const handleSplashComplete = () => {
     setShowSplash(false);
+    
+    // Ensure we're at the correct route after splash
+    // For GitHub Pages, we might need to parse the URL
+    const path = window.location.pathname.replace('/Portfolio', '');
+    if (path === '' || path === '/') {
+      navigate('/');
+    } else {
+      // If there's a specific path, navigate to it
+      navigate(path);
+    }
   };
 
   if (showSplash) {
