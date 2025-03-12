@@ -28,32 +28,14 @@ function App() {
     }
   }, [isDarkMode]);
 
-  // Parse the URL to handle GitHub Pages SPA redirection
-  useEffect(() => {
-    // Check if we have a redirect path from GitHub Pages in the query string
-    const queryParams = new URLSearchParams(window.location.search);
-    const redirectPath = queryParams.get('p');
-    
-    if (redirectPath) {
-      // Remove the query parameter and navigate to the correct path
-      window.history.replaceState(null, '', window.location.pathname);
-      navigate(redirectPath);
-    }
-  }, [navigate]);
-
   // Handle splash screen completion
   const handleSplashComplete = () => {
     setShowSplash(false);
     
-    // Ensure we're at the correct route after splash
-    // For GitHub Pages, we might need to parse the URL
-    const path = window.location.pathname.replace('/Portfolio', '');
-    if (path === '' || path === '/') {
-      navigate('/');
-    } else {
-      // If there's a specific path, navigate to it
-      navigate(path);
-    }
+    // With HashRouter, we can simply navigate to the current path
+    // This works consistently across all browsers
+    const path = location.pathname || '/';
+    navigate(path);
   };
 
   if (showSplash) {
