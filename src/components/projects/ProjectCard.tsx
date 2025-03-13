@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
-import { Project } from '../types';
+import { ExternalLink, Github, Clock, CheckCircle } from 'lucide-react';
+import { Project } from '../../types';
+import { useLanguageStore } from '../../store/language';
+import { translations } from '../../translations';
 
 interface ProjectCardProps {
   project: Project;
@@ -9,6 +11,9 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguageStore();
+  const t = translations[language].common;
+  const projectT = translations[language].projectContent[project.id] || project;
   
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -58,9 +63,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <div className="relative overflow-hidden h-48 group">
         <motion.img 
           src={project.image} 
-          alt={project.title}
+          alt={projectT.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
+        
+        {project.status === 'in-progress' && (
+          <div className="absolute top-0 right-0 bg-yellow-500 text-white px-3 py-1 rounded-bl-lg flex items-center gap-1 shadow-md">
+            <Clock size={14} />
+            <span className="text-xs font-medium">{t.inProgress}</span>
+          </div>
+        )}
+        
+        {project.status === 'completed' && (
+          <div className="absolute top-0 right-0 bg-green-500 text-white px-3 py-1 rounded-bl-lg flex items-center gap-1 shadow-md">
+            <CheckCircle size={14} />
+            <span className="text-xs font-medium">{t.completed}</span>
+          </div>
+        )}
+        
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
           <div className="p-4 w-full flex justify-end gap-2">
             {project.github && (
@@ -69,6 +89,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/40 transition-colors"
+                title={t.viewCode}
               >
                 <Github size={18} className="text-white" />
               </a>
@@ -78,6 +99,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/40 transition-colors"
+              title={t.viewProject}
             >
               <ExternalLink size={18} className="text-white" />
             </a>
@@ -89,8 +111,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         style={{ transformStyle: 'preserve-3d' }}
         whileHover={{ z: 10 }}
       >
-        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+        <h3 className="text-xl font-bold mb-2">{projectT.title}</h3>
+        
+        {project.year && (
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{project.year}</p>
+        )}
+        
+        {projectT.role && (
+          <p className="text-sm text-accent-light dark:text-accent-dark font-medium mb-2">{projectT.role}</p>
+        )}
+        
+        <p className="text-gray-600 dark:text-gray-300 mb-4">{projectT.description}</p>
         <div className="flex flex-wrap gap-2">
           {project.technologies.map((tech, index) => (
             <span

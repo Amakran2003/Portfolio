@@ -1,12 +1,17 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { Code, Layers, Lightbulb } from 'lucide-react';
+import { useLanguageStore } from '../store/language';
+import { translations } from '../translations';
 
 interface SplashScreenProps {
   onComplete: () => void;
 }
 
 const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
+  const { language } = useLanguageStore();
+  const t = translations[language].common;
+  
   useEffect(() => {
     // Auto-redirect after animation completes (2.5 seconds)
     const timer = setTimeout(() => {
@@ -90,7 +95,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.5 }}
           >
-            Full-Stack Developer
+            {t.fullStackDeveloper}
           </motion.p>
         </motion.div>
       </motion.div>
