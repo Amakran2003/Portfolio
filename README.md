@@ -67,7 +67,7 @@ The site is automatically deployed to GitHub Pages when changes are pushed to th
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is available under the [Apache License](LICENSE).
 
 ## 📧 Contact
 
