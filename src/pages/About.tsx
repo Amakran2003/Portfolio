@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle, Code, Gauge, TestTube } from 'lucide-react';
+import { CheckCircle, Code, Gauge, TestTube, Ear, Heart } from 'lucide-react';
 import { useLanguageStore } from '../store/language';
 import { translations } from '../translations';
 
@@ -34,6 +34,8 @@ const About = () => {
     { icon: Code, text: t.qualitiesList.code },
     { icon: Gauge, text: t.qualitiesList.optimization },
     { icon: TestTube, text: t.qualitiesList.testing },
+    { icon: Ear, text: t.qualitiesList.listening },
+    { icon: Heart, text: t.qualitiesList.authenticity },
   ];
 
   return (

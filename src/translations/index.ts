@@ -25,6 +25,8 @@ export const translations = {
         code: 'Clean, Well-Documented Code',
         optimization: 'Performance Optimization',
         testing: 'Comprehensive Testing',
+        listening: 'Active Listening',
+        authenticity: 'Authenticity'
       },
     },
     projects: {
@@ -140,6 +142,8 @@ export const translations = {
         code: 'Code Propre et Bien Documenté',
         optimization: 'Optimisation des Performances',
         testing: 'Tests Complets',
+        listening: 'Écoute Active',
+        authenticity: 'Authenticité'
       },
     },
     projects: {
