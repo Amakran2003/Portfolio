@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useLanguageStore } from '../../store/language';
 import { translations } from '../../translations';
-import AnimatedText from '../AnimatedText';
+import AnimatedText from '../common/AnimatedText';
 import SocialLinks from '../home/SocialLinks';
 import TechStack from '../home/TechStack';
 

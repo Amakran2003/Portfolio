@@ -4,7 +4,7 @@ import { useLanguageStore } from '../store/language';
 import { translations } from '../translations';
 import { schoolProjects, websiteProjects, hackatonProjects } from '../data/projects';
 import ProjectCategory from '../components/projects/ProjectCategory';
-import PageTransition from '../components/PageTransition';
+import PageTransition from '../components/common/PageTransition';
 
 const Projects = () => {
   const { language } = useLanguageStore();

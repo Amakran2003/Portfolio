@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { Code, Layers, Lightbulb } from 'lucide-react';
-import { useLanguageStore } from '../store/language';
-import { translations } from '../translations';
+import { useLanguageStore } from '../../store/language';
+import { translations } from '../../translations';
 
 interface SplashScreenProps {
   onComplete: () => void;

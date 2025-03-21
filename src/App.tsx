@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { useThemeStore } from './store/theme';
-import Navbar from './components/Navbar';
+import Navbar from './components/common/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Testimonials from './pages/Testimonials';
 import Contact from './pages/Contact';
-import AnimatedCursor from './components/AnimatedCursor';
-import SplashScreen from './components/SplashScreen';
+import AnimatedCursor from './components/common/AnimatedCursor';
+import SplashScreen from './components/common/SplashScreen';
+import ScrollToTop from './components/common/ScrollToTop';
+import UnderConstructionBanner from './components/common/UnderConstructionBanner';
 import '@fontsource/poppins';
 import '@fontsource/inter';
 import './App.css';
@@ -44,7 +46,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-primary-light dark:bg-primary-dark text-text-light dark:text-text-dark font-inter transition-colors duration-300">
+      <ScrollToTop />
       <Navbar />
+      <UnderConstructionBanner />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />

@@ -1,5 +1,4 @@
-import React from 'react';
-import { useLanguageStore } from '../store/language';
+import { useLanguageStore } from '../../store/language';
 
 const LanguageToggle = () => {
   const { language, setLanguage } = useLanguageStore();

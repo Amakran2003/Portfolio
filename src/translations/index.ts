@@ -14,8 +14,8 @@ export const translations = {
     },
     about: {
       title: 'About Me',
-      description1: 'I am a detail-oriented full-stack developer with a passion for crafting exceptional digital experiences. My meticulous approach to development ensures that every project is built with precision, performance, and user experience in mind.',
-      description2: 'With a keen eye for design and a commitment to clean, maintainable code, I specialize in creating scalable web applications that not only meet but exceed expectations. My methodical problem-solving approach and attention to detail result in robust, efficient solutions that stand the test of time.',
+      description1: 'I am Abderrazaq Makran, a computer science student at Algosup and passionate about web development and solving technical challenges.\n\n Born in France and having grown up between Cholet, Casablanca, and Riyadh, I\'ve learned to adapt quickly and understand the varied needs of different people. This cultural diversity feeds my approach: meticulous, pragmatic, and always aiming for excellence.',
+      description2: 'Today, I design modern websites with React, Vite, and Tailwind, focusing on speed, design, and efficiency. My goal is simple: help businesses have a website that actually works for them, much more than just a static showcase.\n\nWith several successful experiences, I have helped various establishments improve their online performance and reduce costs, while avoiding common pitfalls – poorly configured hosting, overloaded sites, or bad SEO practices.\n Trilingual (French, English, Arabic) and always ready to take on a new challenge, I am convinced that every technical problem has its solution. Need a well-designed, high-performance website? Let\'s talk about it!',
       skills: 'Technical Expertise',
       frontend: 'Frontend',
       backend: 'Backend',
@@ -129,8 +129,8 @@ export const translations = {
     },
     about: {
       title: 'À propos de moi',
-      description1: 'Je suis un développeur full-stack minutieux avec une passion pour la création d\'expériences numériques exceptionnelles. Mon approche méticuleuse du développement garantit que chaque projet est construit avec précision, performance et expérience utilisateur en tête.',
-      description2: 'Avec un œil aiguisé pour le design et un engagement pour un code propre et maintenable, je me spécialise dans la création d\'applications web évolutives qui non seulement répondent aux attentes, mais les dépassent. Mon approche méthodique de la résolution de problèmes et mon attention aux détails aboutissent à des solutions robustes et efficaces qui résistent à l\'épreuve du temps.',
+      description1: 'Je suis Abderrazaq Makran, étudiant en informatique à Algosup et passionné par le développement web et la résolution de défis techniques.\n\nNé en France et ayant grandi entre Cholet, Casablanca et Riyad, j\'ai appris à m\'adapter rapidement et à comprendre les besoins variés de chacun. Cette diversité culturelle nourrit mon approche : minutieuse, pragmatique et toujours tournée vers l\'excellence.',
+      description2: 'Aujourd\'hui, je conçois des sites web modernes avec React, Vite et Tailwind, en misant sur la rapidité, le design et l\'efficacité. Mon objectif est simple : aider les entreprises à disposer d\'un site web qui travaille réellement pour elles, bien plus qu\'une simple vitrine statique.\n\nFort de plusieurs expériences réussies, j\'ai accompagné divers établissements en améliorant leurs performances en ligne et en réduisant leurs coûts, tout en évitant les écueils classiques – hébergements mal configurés, sites surchargés ou mauvaises pratiques SEO.\n\nTrilingue (français, anglais, arabe) et toujours prêt à relever un nouveau défi, je suis convaincu que chaque problème technique a sa solution. Besoin d\'un site web performant et bien pensé ? Parlons-en !',
       skills: 'Expertise Technique',
       frontend: 'Frontend',
       backend: 'Backend',

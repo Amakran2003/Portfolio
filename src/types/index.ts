@@ -19,7 +19,7 @@ export interface ProjectTranslation {
 }
 
 // Add to existing type declarations
-declare module './translations' {
+declare module '../translations' {
   interface TranslationsType {
     [language: string]: {
       projectContent: {

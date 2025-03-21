@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import FloatingShapes from '../components/home/FloatingShapes';
-import PageTransition from '../components/PageTransition';
+import PageTransition from '../components/common/PageTransition';
 import HeroSection from '../components/home/HeroSection';
 import ProfileImage from '../components/home/ProfileImage';
 

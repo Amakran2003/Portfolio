@@ -13,7 +13,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguageStore();
   const t = translations[language].common;
-  const projectT = translations[language].projectContent[project.id] || project;
+  // Fix the TypeScript error by using a type assertion
+  const projectT = (translations[language].projectContent as Record<string, any>)[project.id] || project;
   
   const x = useMotionValue(0);
   const y = useMotionValue(0);

@@ -2,9 +2,9 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Sun, Moon, Menu, X } from 'lucide-react';
-import { useThemeStore } from '../store/theme';
-import { useLanguageStore } from '../store/language';
-import { translations } from '../translations';
+import { useThemeStore } from '../../store/theme';
+import { useLanguageStore } from '../../store/language';
+import { translations } from '../../translations';
 import LanguageToggle from './LanguageToggle';
 
 const Navbar = () => {
