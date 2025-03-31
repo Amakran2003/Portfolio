@@ -9,6 +9,10 @@ const UnderConstructionBanner: React.FC = () => {
   
   // Check if the banner was previously dismissed
   useEffect(() => {
+    // Reset the localStorage value to ensure the banner shows again
+    // You can remove this line once you want the dismiss feature to work permanently again
+    localStorage.removeItem('construction-banner-dismissed');
+    
     const dismissed = localStorage.getItem('construction-banner-dismissed');
     if (dismissed) {
       setIsVisible(false);

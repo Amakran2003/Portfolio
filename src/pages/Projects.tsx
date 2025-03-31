@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguageStore } from '../store/language';
 import { translations } from '../translations';
-import { schoolProjects, websiteProjects, hackatonProjects } from '../data/projects';
+import { schoolProjects, websiteProjects, hackatonProjects } from '../components/projects/data/projects';
 import ProjectCategory from '../components/projects/ProjectCategory';
 import PageTransition from '../components/common/PageTransition';
 

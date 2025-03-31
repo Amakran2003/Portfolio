@@ -1,4 +1,4 @@
-import { Project } from '../types';
+import { Project } from '../../../types';
 
 // Website Projects - Removed GitHub links
 export const websiteProjects: Project[] = [

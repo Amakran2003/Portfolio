@@ -8,15 +8,23 @@ const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Use immediate scrolling instead of smooth scrolling
-    // to ensure it happens before any animations
-    window.scrollTo(0, 0);
+    // Add a small delay to ensure DOM is fully updated
+    const timeoutId = setTimeout(() => {
+      // Try multiple scroll methods for better mobile compatibility
+      if (window.scrollTo) {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'auto' // Use 'auto' instead of 'smooth' for more reliable behavior
+        });
+      }
+      
+      // Fallback for older browsers and Safari on iOS
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0; // Specifically for Safari on iOS
+    }, 100);
     
-    // Alternative approach: delay slightly to ensure it runs after any route changes
-    // const timeout = setTimeout(() => {
-    //   window.scrollTo(0, 0);
-    // }, 100);
-    // return () => clearTimeout(timeout);
+    return () => clearTimeout(timeoutId);
   }, [pathname]);
 
   return null;
